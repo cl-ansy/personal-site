@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>{% block title %}Chris Lansing{% endblock title %}</title>
+<!-- YUI 3 CSS Reset  -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">
+<style type="text/css">
+	body{
+		margin:auto;
+	}
+	#container{
+		background-color:#ACACAC;	
+		margin-left:auto;
+		margin-right:auto;
+	}
+	#header{
+		background-color:#FFFFFF;
+		text-align:center;
+		height:75px;
+		margin:auto;
+		border:1px solid #000000;
+	}
+	.navbar{
+		z-index:1;
+		background-color:#FFFFFF;
+		text-align:center;
+		height:35px;
+		margin:auto;
+		border:1px solid #000000;
+	}
+	.fix {
+		position:fixed;
+	}
+	#sidebar{
+	}
+	#content{
+		background-color:#FFFFFF;
+		height:2000px;
+		width:920px;
+		margin-left:auto;
+		margin-right:auto;
+		border:1px solid #000000;
+	}
+	ul{
+		margin:auto;
+	}
+	li{
+		display:inline;
+		list-style-type:none;
+	}
+	a{
+		text-decoration:none;
+	}
+</style>
+<!-- JS to make the nav bar scroll with the page  -->
+<script>
+$(function(){
+  var
+    $win = $(window),
+    $filter = $('.navbar'),
+    $filterSpacer = $('<div />', {
+      "class": "filter-drop-spacer",
+      "height": $filter.outerHeight()
+    });
+  $win.scroll(function(){     
+    if(!$filter.hasClass('fix') && $win.scrollTop() > $filter.offset().top){
+      $filter.before($filterSpacer);
+      $filter.addClass("fix");
+    } else if ($filter.hasClass('fix')  && $win.scrollTop() < $filterSpacer.offset().top){
+      $filter.removeClass("fix");
+      $filterSpacer.remove();
+    }
+  });
+});
+</script>
+</head>
+
+<body>
+<div id="container">
+<div id="header">{% block header %}Header{% endblock header %}</div>
+<div class="navbar">{% block nav %}
+<ul>
+<li><a href="http://www.cslansing.com/">Home</a></li>
+<li><a href="http://www.cslansing.com/about/">About</a></li>
+<li><a href="http://www.cslansing.com/resume/">Resume</a></li>
+</ul>
+{% endblock nav %}</div>
+<div id="submenu">{% block submenu %}{% endblock submenu %}</div>
+<div id="sidebar">{% block sidebar %}{% endblock sidebar %}</div>
+<div id="content">{% block content %}Content{% endblock content %}</div>
+</div>
+</body>
+</html>

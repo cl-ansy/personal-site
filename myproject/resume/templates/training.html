@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block styles %}
+.sidebar-nav-fixed {
+  position:fixed;
+  top:86px;
+}
+{% endblock %}
+{% block active_training %}active{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <div class="well sidebar-nav sidebar-nav-fixed">
+        <ul class="nav nav-list">
+          <li><a href="#stats">Stats</a></li>
+          <li><a href="#trainingLog">Training Log</a></li>
+          <li><a href="#routine">Routine</a></li>
+          <li><a href="#diet">Diet</a></li>
+        </ul><!-- nav-list -->
+      </div><!-- sidebar-nav -->
+    </div><!-- span2 -->
+    <div class="span10">
+      <section id="stats">
+        <div class="hero-unit">
+          <h2>Stats</h2>
+          <p>
+            Height: 6'0"<br />
+            Weight: 185 lbs<br />
+          </p><br />
+          <p>
+            <h4>Personal Records</h4>
+            <p>
+              Squat: 325 lbs (3/15/13)<br />
+              Bench: -<br />
+              Deadlift: 415 lbs (3/14/13)<br />
+              Press: - <br />
+          </p>
+        </div><!-- hero-unit -->
+      </section>
+      <section id="trainingLog">
+        <h2>Training Log</h2>
+      </section>
+      <section id="routine">
+        <h4>Routine</h4>
+        <p><a href="">Jim Wendler's 5/3/1</a></p>
+      </section>
+      <section id="diet">
+        <br />
+        <h2>Diet</h2>
+        <p>
+          Current BMR: 1983<br />
+          Activity Multiplier: 1.3 (Moderately Active)<br />
+          Total Daily Energy Expenditure(TDEE): <b>2578</b><br />
+          Eat: 3:00pm - 11:00 pm<br />
+          Fast: 11:00pm - 3:00 pm<br />
+        </p><br />
+        <h4>Training Day</h4>
+        <p>
+          Calories: <b>2500</b><br />
+          Macros: Protein - 180g, Fat - 30g, Carbs - 378g<br />
+          Food: ~1kg lean meat/fish, ~450g rice, veggies
+        </p><br />
+        <h4>Rest Day</h4>
+        <p>
+          Calories: <b>1700</b><br />
+          Macros: Protein - 180g, Fat - 60g, Carbs - 110g<br />
+          Food: ~500g fatty meat/fish, ~500g lean meat/fish, ~80g rice, veggies
+        </p>
+        <p><small><i>Diet information calculated using <a href="http://www.rippedbody.jp">rippedbody.jp</a></i></small></p>
+        <br />
+      </section>
+    </div><!-- span10 -->
+  </div><!-- row-fluid -->
+</div><!-- container-fluid -->
+{% endblock content %}
