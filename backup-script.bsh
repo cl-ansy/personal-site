@@ -1,0 +1,10 @@
+#!/bin/bash
+TIMESTAMP=`date +%Y%m%d.%H%M`
+DEST_DIR="/backups/site-backups"
+SRC_DIR="/home/cslansing/django_projects/myproject"
+FNAME="SiteBackup"
+LOG="/home/cslansing/log/$FNAME-$TIMESTAMP.log"
+
+echo -e "Starting backup of cslansing $SRC_DIR directory" >> ${LOG}
+tar -vczf ${DEST_DIR}/${FNAME}-${TIMESTAMP}.tar.gz ${SRC_DIR} >> ${LOG}
+echo -e "Ending backup of cslansing $SRC_DIR" >> ${LOG}
