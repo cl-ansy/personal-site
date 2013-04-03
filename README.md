@@ -8,8 +8,14 @@ git add FILENAME
 git commit -m 'comment'
 #Commits all staged files, adding the message 'comment'
 
+git diff --cached
+#show staged changes against the current HEAD
+
 git remote add origin https://github.com/cslansing/django_site.git
 #Creates a remote name "origin" pointing at the GitHub repo
 
 git push origin master
 #Sends commits in the "master" branch to GitHub
+
+git pull origin master
+#pulls from master branch
