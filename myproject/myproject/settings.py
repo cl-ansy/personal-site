@@ -104,7 +104,9 @@ ROOT_URLCONF = 'myproject.urls'
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
 TEMPLATE_DIRS = (
+    "/home/cslansing/django_projects/myproject/myproject/templates",
     "/home/cslansing/django_projects/myproject/resume/templates",
+    "/home/cslansing/django_projects/myproject/attendance/templates",
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
