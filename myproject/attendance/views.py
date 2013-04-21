@@ -5,4 +5,12 @@ from django.template import RequestContext
 def attendance(request):
     #html = "<html><body>Coming Soon...</body></html>"
     #return HttpResponse(html)
-    return render_to_response('attendance.html', {"foo": "bar"}, context_instance=RequestContext(request))
+    if request.method == 'POST':
+        form = CheckInForm(request)
+        if form.isValid():
+            form.save()
+        else:
+            form = CheckInForm()
+    else:
+        form = CheckInForm()
+    return render_to_response('attendance.html', {'form': form}, context_instance=RequestContext(request))
