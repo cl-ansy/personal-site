@@ -8,5 +8,5 @@ class CheckIn(models.Model):
   timestamp = models.DateTimeField()
   
   def __unicode__(self):
-    return studentID 
+    return self.studentID 
   
