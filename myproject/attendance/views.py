@@ -16,4 +16,6 @@ def attendance(request):
         checkin.classID=c_id
         checkin.timestamp = datetime.now()
         checkin.save()
-    return render_to_response('attendance.html', {'checkin',checkin}, context_instance=RequestContext(request))
+    else:
+        checkin = CheckIn()
+    return render_to_response('attendance.html',{'checkin':checkin}, context_instance=RequestContext(request))
