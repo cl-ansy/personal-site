@@ -28,15 +28,18 @@
 
     <!-- External Styles -->
     <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css"></link>
-    <style>
+<!--    <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
-    </style>
+    </style>-->
     <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.min.css">
 
     <!-- Styles to be added externally when complete -->
     <style type="text/css">
+      html, body{
+        height:100%;
+      }
       body{
         background-image:url('{{ MEDIA_URL }}debut_dark/debut_dark.png');
       } 
@@ -49,12 +52,18 @@
       .content-inner{
         background-color:#FCFCFC;
         color:#000000;
-        padding: 25px 20px 25px;
+        padding:25px 20px 25px;
       }
-      .footer{
-        height:80px;
-        background-color:#CCCCCC;
-        color:#000000;
+      #wrap{
+        min-height:100%;
+        margin:0 auto -60px;
+      }
+      #footer{
+        height:60px;
+        
+      }
+      .credit{
+        margin:20px;
       }
       {% block styles %}
       {% endblock %}
@@ -65,8 +74,10 @@
   </head>
 
   <body>
+    <!-- Wrapper -->
+    <div id="wrap">
     <!-- Nav bar -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -81,7 +92,7 @@
               <li class="{% block active_about %}{% endblock %}"><a href="/about/">About</a></li>
               <li class="{% block active_attendance %}{% endblock %}"><a href="/attendance/">Attendance App</a></li>
 	      <li class="{% block active_resume %}{% endblock %}"><a href="/resume/">Resume</a></li>
-	      <li class="{% block active_training %}{% endblock %}"><a href="/training/">Training Log</a></li>
+	      <!--<li class="{% block active_training %}{% endblock %}"><a href="/training/">Training Log</a></li>-->
             </ul><!-- nav -->
           </div><!-- nav-collapse -->
         </div><!-- container -->
@@ -98,15 +109,18 @@
         <div class="content-inner">
           {% block content %}{% endblock content %}
         </div><!-- content-inner -->
-
-        <!-- Footer -->
-        <div class="footer">
-        </div><!-- footer -->
       </div><!-- content -->
     </div><!-- container -->
-    
-    <!-- Javascript -->
+    </div><!-- wrap -->
+    <!-- Footer -->
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">csl</p>
+      </div>
+    </div> 
+    <!-- Javascript at the bottom for faster page loads -->
+    <script src="{{ STATIC_URL }}jquery/jquery-1.9.1.min.js"></script>
     <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
-
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-collapse.js"></script>
   </body>
 </html>
