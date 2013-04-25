@@ -19,5 +19,5 @@ def attendance(request):
 #        checkin.timestamp = datetime.now()
 #        checkin.save()
 #    else:
-    checkin = CheckIn()
+    checkin = CheckIn.objects.all()
     return render_to_response('attendance.html', {'checkin':checkin}, context_instance=RequestContext(request))
