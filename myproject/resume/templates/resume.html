@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% block styles %}
-<style type="text/css">
-  iframe {
+iframe {
     width:100%;
     height:900px;
-  }
+}
 </style>
 {% endblock styles %}
 {% block active_resume %}active{% endblock %}
 {% block content %}
-<iframe src="http://www.cslansing.com"></iframe>
+<iframe src="{{ STATIC_URL }}resume.pdf"></iframe>
 {% endblock content %}

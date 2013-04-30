@@ -11,10 +11,8 @@
     <!-- Google Analytics -->
     <script type="text/javascript">
       var _gaq = _gaq || [];
-      var pluginUrl =
-       '//www.google-
-      analytics.com/plugins/ga/inpage_linkid.js';
-      _gag.push(['_require', 'inpage_linkid',
+      var pluginUrl ='//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid',
       pluginUrl]);
       _gaq.push(['_setAccount', 'UA-38866448-1']);
       _gaq.push(['_trackPageview']);
@@ -28,11 +26,6 @@
 
     <!-- External Styles -->
     <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css"></link>
-<!--    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>-->
     <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.min.css">
 
     <!-- Styles to be added externally when complete -->
@@ -48,6 +41,7 @@
       .content{
         background-color:#CCCCCC;
         border:1px solid #CCCCCC;
+        margin:30px;
       }
       .content-inner{
         background-color:#FCFCFC;
@@ -56,7 +50,7 @@
       }
       #wrap{
         min-height:100%;
-        margin:0 auto -60px;
+        margin:0px auto -60px;
       }
       #footer{
         height:60px;
@@ -92,7 +86,7 @@
               <li class="{% block active_about %}{% endblock %}"><a href="/about/">About</a></li>
               <li class="{% block active_attendance %}{% endblock %}"><a href="/attendance/">Attendance App</a></li>
 	      <li class="{% block active_resume %}{% endblock %}"><a href="/resume/">Resume</a></li>
-	      <!--<li class="{% block active_training %}{% endblock %}"><a href="/training/">Training Log</a></li>-->
+	      <li class="{% block active_training %}{% endblock %}"><a href="/training/">Training Log</a></li>
             </ul><!-- nav -->
           </div><!-- nav-collapse -->
         </div><!-- container -->

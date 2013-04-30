@@ -6,18 +6,15 @@ from attendance.models import CheckIn
 
 @csrf_exempt
 def attendance(request):
-#    if request.method == 'POST':
-#        #if CheckIn.objects.filter(studentID=request.POST['StudentID'],classID=request.POST['ClassID'],timestamp.date()=datetime.now().date()).distinct():
-#         #   checkin = CheckIn.objects.get(studentID=request.POST['StudentID'],classID=request.POST['ClassID'],timestamp=datetime.now())
-#        #else:
-#        s_id = request.POST.get('StudentID', '')
-#        c_id = request.POST.get('ClassID', '')
-#        checkin = CheckIn()
-#        checkin.studentID = 1324        
-#        checkin.studentID = s_id
-#        checkin.classID = c_id
-#        checkin.timestamp = datetime.now()
-#        checkin.save()
-#    else:
-    checkin = CheckIn.objects.all()
-    return render_to_response('attendance.html', {'checkin':checkin}, context_instance=RequestContext(request))
+    if request.method == 'POST':
+        key = request.POST.get('Key', '')
+#        if CheckIn.objects.filter(studentID=request.POST['StudentID'],classID=request.POST['ClassID'],timestamp.date()=datetime.now().date()).distinct():
+#            checkin = CheckIn.objects.get(studentID=request.POST['StudentID'],classID=request.POST['ClassID'],timestamp=datetime.now())
+        if key  == 'PuN5XfYtn':
+            checkin = CheckIn()
+            checkin.studentID = request.POST.get('StudentID', '')
+            checkin.classID = request.POST.get('ClassID', '')
+            checkin.timestamp = datetime.now()
+            checkin.save()
+    checkins = CheckIn.objects.order_by("-timestamp")
+    return render_to_response('attendance.html', {'checkins':checkins}, context_instance=RequestContext(request))

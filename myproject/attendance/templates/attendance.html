@@ -1,28 +1,43 @@
 {% extends "base.html" %}
 {% block active_attendance %}active{% endblock %}
 {% block content %}
+<h2>Attendance Log</h2>
 <div id="attendance">
-  <h2>Attendance Log</h2>
-  <table class="table">
+ <table class="table">
     <thead>
       <tr>
         <th>Student ID</th>
         <th>Class ID</th>
         <th>Time</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
-      {% for c in checkin %}
-      <tr>
-        <td>{{ c.studentID }}</td>
-        <td>{{ c.classID }}</td>
-        <td>{{ c.timestamp }}</td>
-      </tr>
+      {% for c in checkins %}
+        {% if c.studentID|length == 9 %}
+          <tr class="success">
+            <td>{{ c.studentID }}</td>
+            <td>{{ c.classID }}</td>
+            <td>{{ c.timestamp }}</td>
+            <td>Verified</td>
+          </tr>
+        {% else %}
+          <tr class="error">
+            <td>{{ c.studentID }}</td>
+            <td>{{ c.classID }}</td>
+            <td>{{ c.timestamp }}</td>
+            <td>Incorrect ID</td>
+          </tr>
+        {% endif %}
       {% endfor %}
     </tbody>
   </table>
-  <p><small>Attendance info is sent from the NFC tag via POST, stored in the database, and then displayed on this page.</small></p>
-</div>
+</div><!-- attendance -->
+<p><small>Attendance info is sent from the NFC tag via POST, stored in the database, and then displayed on this page. 
+The log will automatically refresh every 20 seconds.</small></p>
 {% endblock content %}
 {% block scripts %}
+<script type="text/javascript">
+var auto_refresh = setInterval(function(){$('#attendance').load('{% url "attendance" %} #attendance')},20000);
+</script>
 {% endblock scripts %}
