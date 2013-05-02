@@ -14,30 +14,47 @@
     </thead>
     <tbody>
       {% for c in checkins %}
-        {% if c.studentID|length == 9 %}
+        {% if c.studentID|length != 9 %}
+          <tr class="error">
+            <td>{{ c.studentID }}</td>
+            <td>{{ c.classID }}</td>
+            <td>{{ c.timestamp }}</td>
+            <td>Incorrect Student ID</td>
+          </tr>
+        {% elif c.classID|length != 7 %}
+          <tr class="error">
+            <td>{{ c.studentID }}</td>
+            <td>{{ c.classID }}</td>
+            <td>{{ c.timestamp }}</td>
+            <td>Incorrect Class ID</td>
+          </tr>
+        {% else %}
           <tr class="success">
             <td>{{ c.studentID }}</td>
             <td>{{ c.classID }}</td>
             <td>{{ c.timestamp }}</td>
             <td>Verified</td>
           </tr>
-        {% else %}
-          <tr class="error">
-            <td>{{ c.studentID }}</td>
-            <td>{{ c.classID }}</td>
-            <td>{{ c.timestamp }}</td>
-            <td>Incorrect ID</td>
-          </tr>
         {% endif %}
       {% endfor %}
     </tbody>
   </table>
+<p>Page {{ checkins.number }} of {{ checkins.paginator.num_pages }}</p>
+<div class="pagination">
+  <ul>
+    {% if checkins.has_previous %}<li><a href="?page={{ checkins.previous_page_number }}">Previous Page</a></li>{% endif %}
+    {% if checkins.has_next %}<li><a href="?page={{ checkins.next_page_number }}">Next Page</a></li>{% endif %}
+  </ul>
+</div><!-- pagination -->
 </div><!-- attendance -->
-<p><small>Attendance info is sent from the NFC tag via POST, stored in the database, and then displayed on this page. 
-The log will automatically refresh every 20 seconds.</small></p>
+<!--<div class="btn btn-primary" onclick="refresh()">Refresh</div><br /><br />-->
+<p><small>Attendance info is sent from the NFC tag via POST, stored in the database, and then displayed on this page.</small></p>
 {% endblock content %}
 {% block scripts %}
 <script type="text/javascript">
-var auto_refresh = setInterval(function(){$('#attendance').load('{% url "attendance" %} #attendance')},20000);
+function refresh(){
+  $('#attendance').load('{% url "attendance" %} #attendance');
+}
+//var auto_refresh = setInterval(function(){$('#attendance').load('{% url "attendance" %} #attendance')},20000);
 </script>
 {% endblock scripts %}
