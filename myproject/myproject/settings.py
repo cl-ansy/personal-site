@@ -107,6 +107,7 @@ TEMPLATE_DIRS = (
     "/home/cslansing/django_projects/myproject/myproject/templates",
     "/home/cslansing/django_projects/myproject/resume/templates",
     "/home/cslansing/django_projects/myproject/attendance/templates",
+    "/home/cslansing/django_projects/myproject/eveapps/templates",
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -123,6 +124,7 @@ INSTALLED_APPS = (
     'resume',
     #'polls',
     'attendance',
+    'eveapps',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
