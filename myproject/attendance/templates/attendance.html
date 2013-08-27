@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-{% block active_attendance %}active{% endblock %}
 {% block content %}
-<h2>Attendance Log</h2>
+<div class="page-header">
+ <h1>Attendance</h1>
+</div>
 <div id="attendance">
  <table class="table">
     <thead>
@@ -48,7 +49,7 @@
 </div><!-- pagination -->
 </div><!-- attendance -->
 <!--<div class="btn btn-primary" onclick="refresh()">Refresh</div><br /><br />-->
-<p><small>Attendance info is sent from the NFC tag via POST, stored in the database, and then displayed on this page.</small></p>
+<p><small>This page is for an android application that allows students to scan an NFC tag using an android device in order to verify their attendance for a class. Attendance info is sent from the NFC tag via POST, stored in the database, and then displayed on this page.</small></p>
 {% endblock content %}
 {% block scripts %}
 <script type="text/javascript">

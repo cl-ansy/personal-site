@@ -25,39 +25,14 @@
     </script>
 
     <!-- External Styles -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css"></link>
+    <!-- Cyborg theme from bootswatch.com -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/readable/bootstrap.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.min.css">
 
     <!-- Styles to be added externally when complete -->
     <style type="text/css">
-      html, body{
-        height:100%;
-      }
-      body{
-        background-image:url('{{ MEDIA_URL }}debut_dark/debut_dark.png');
-      } 
-      .header{
-      }
-      .content{
-        background-color:#CCCCCC;
-        border:1px solid #CCCCCC;
-        margin:30px;
-      }
       .content-inner{
-        background-color:#FCFCFC;
-        color:#000000;
-        padding:25px 20px 25px;
-      }
-      #wrap{
-        min-height:100%;
-        margin:0px auto -60px;
-      }
-      #footer{
-        height:60px;
-        
-      }
-      .credit{
-        margin:20px;
+        padding-top: 20px;
       }
       {% block styles %}
       {% endblock %}
@@ -68,8 +43,6 @@
   </head>
 
   <body>
-    <!-- Wrapper -->
-    <div id="wrap">
     <!-- Nav bar -->
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="navbar-inner">
@@ -84,40 +57,35 @@
             <ul class="nav">{% comment %}overwrite following li class blocks with active for corresponding sections{% endcomment %}
               <li class="{% block active_home %}{% endblock %}"><a href="/">Home</a></li>
               <li class="{% block active_about %}{% endblock %}"><a href="/about/">About</a></li>
-              <li class="{% block active_attendance %}{% endblock %}"><a href="/attendance/">Attendance App</a></li>
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Eve Apps<b class="caret"></b></a>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Projects<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/eveapps/testappone">Test App One</a></li>
-                  <li><a href="/eveapps/testapptwo">Test App Two</a></li>
+                  <li><a href="/attendance/">Attendance App</a></li>
+                  <li><a href="/training/">Training Log</a></li>
+                  <li><a href="/eveapps/testappone">Eve Test App One</a></li>
+                  <li><a href="/eveapps/testapptwo">Eve Test App Two</a></li>
                 </ul>
               </li>
 	      <li class="{% block active_resume %}{% endblock %}"><a href="/resume/">Resume</a></li>
-	      <li class="{% block active_training %}{% endblock %}"><a href="/training/">Training Log</a></li>
             </ul><!-- nav -->
           </div><!-- nav-collapse -->
         </div><!-- container -->
       </div><!-- navbar-inner  -->
     </div><!-- navbar -->
-    
+   <!--
+    <div class="site-header">
+      {% block header_title %}
+      {% endblock header_title %}
+    </div>
+    -->
     <div class="container">
       <div class="content">
-        <!-- Header -->
-        <div class="header">
-        </div>
-
         <!-- Main Content -->
         <div class="content-inner">
           {% block content %}{% endblock content %}
         </div><!-- content-inner -->
       </div><!-- content -->
     </div><!-- container -->
-    </div><!-- wrap -->
-    <!-- Footer -->
-    <div id="footer">
-      <div class="container">
-        <p class="muted credit">csl</p>
-      </div>
-    </div> 
+ 
     <!-- Javascript at the bottom for faster page loads -->
     <script src="{{ STATIC_URL }}jquery/jquery-1.9.1.min.js"></script>
     <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>

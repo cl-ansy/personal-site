@@ -8,6 +8,9 @@ iframe {
 {% endblock styles %}
 {% block active_resume %}active{% endblock %}
 {% block content %}
+<div class="page-header">
+ <h1>Resume</h1>
+</div>
 <a href="{{ STATIC_URL }}resume.pdf">View Raw PDF</a>
 <iframe src="{{ STATIC_URL }}resume.pdf"></iframe>
 {% endblock content %}
